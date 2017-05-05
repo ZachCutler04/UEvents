@@ -7,12 +7,24 @@
 //
 
 import UIKit
+import MapKit
 
 class FirstViewController: UIViewController {
-
+    
+    //MARK: Properties
+    
+    @IBOutlet weak var mapView: MKMapView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        let centerLocation = CLLocationCoordinate2DMake(40.764992, -111.845623)
+        let mapSpan = MKCoordinateSpanMake(0.02, 0.02)
+        let mapRegion = MKCoordinateRegionMake(centerLocation, mapSpan)
+        
+        self.mapView.setRegion(mapRegion, animated: true)
+        mapView.showsBuildings = true
+        mapView.showsPointsOfInterest = true
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -20,6 +32,7 @@ class FirstViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    
 
 }
 
